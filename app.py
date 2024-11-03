@@ -1,12 +1,19 @@
 # app.py
 from flask import Flask, request, jsonify, render_template
-import requests
+from dotenv import load_dotenv
+import requests, os
 
 app = Flask(__name__)
 
-# Replace 'YOUR_HUGGING_FACE_API_KEY' with your actual API key
-HUGGING_FACE_API_KEY = "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"
-MODEL = "gpt2"  # You can choose other models like 'gpt-neo', 'gpt-3', etc.
+# Load environment variables
+load_dotenv()
+api_key = os.getenv('API_KEY')
+
+if not api_key:
+    raise EnvironmentError("API_KEY not found in environment variables")
+
+HUGGING_FACE_API_KEY = api_key
+MODEL = "gpt-3.5-turbo"  # Ensure this model supports your use case
 API_URL = f"https://api-inference.huggingface.co/models/{MODEL}"
 HEADERS = {"Authorization": f"Bearer {HUGGING_FACE_API_KEY}"}
 
@@ -39,7 +46,10 @@ def chat():
         return jsonify({"error": response["details"]}), response["error"]
 
     # Extract response text from the API output
-    generated_text = response[0]["generated_text"]
+    if isinstance(response, list) and "generated_text" in response[0]:
+        generated_text = response[0]["generated_text"]
+    else:
+        generated_text = "Unexpected response format from the model."
 
     return jsonify({"response": generated_text})
 

@@ -11,18 +11,18 @@
 <body>
     <div class="container">
         <h1 class="comic-title">Nerd AI Chatbot</h1>
-        <button class="theme-toggle">Light Mode</button> <!-- Default text -->
+        <button class="theme-toggle" aria-label="Toggle light/dark mode">Light Mode</button> <!-- Default text -->
         <div class="chat-container">
             <div id="chatHistory">
-                <button id="newChatButton" title="New Chat">
+                <button id="newChatButton" title="New Chat" aria-label="Start a new chat">
                     <i class="fas fa-plus"></i> <!-- Icon for new chat -->
                 </button>
             </div>
             <div id="chatbox">
-                <div id="messages"></div>
+                <div id="messages" aria-live="polite"></div> <!-- Live region for accessibility -->
                 <div class="input-container">
-                    <input type="text" id="userInput" placeholder="Type your message...">
-                    <button id="sendButton">Send</button>
+                    <input type="text" id="userInput" placeholder="Type your message..." aria-label="Type your message">
+                    <button id="sendButton" aria-label="Send message">Send</button>
                 </div>
             </div>
         </div>

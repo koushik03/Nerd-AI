@@ -1,18 +1,33 @@
+:root {
+    --primary-color: #007bff; /* Primary button color */
+    --secondary-color: #0056b3; /* Darker primary color for hover */
+    --background-color: #f0f4f8; /* Light background color */
+    --dark-background-color: #181818; /* Dark mode background color */
+    --text-color: #333; /* Dark text color */
+    --light-text-color: #f0f4f8; /* Light text color in dark mode */
+    --sidebar-background: #ffffff; /* Sidebar background */
+    --sidebar-dark-background: #1f1f1f; /* Dark sidebar background */
+    --user-message-color: #d1e7dd; /* User message color */
+    --ai-message-color: #cfe2ff; /* AI message color */
+    --dark-user-message-color: #007bff; /* Dark mode user message color */
+    --dark-ai-message-color: #0d6efd; /* Dark mode AI message color */
+}
+
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 20px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 body.dark-mode {
-    background-color: #181818;
-    color: #f0f4f8;
+    background-color: var(--dark-background-color);
+    color: var(--light-text-color);
 }
 
 .container {
@@ -40,13 +55,13 @@ body.dark-mode {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #ffffff;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
 .theme-toggle:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color); /* Darker color on hover */
 }
 
 .chat-container {
@@ -60,13 +75,13 @@ body.dark-mode {
     padding: 10px;
     border-right: 1px solid #ccc;
     overflow-y: auto;
-    background-color: #ffffff;
+    background-color: var(--sidebar-background);
     border-radius: 10px 0 0 10px;
     position: relative;
 }
 
 body.dark-mode #chatHistory {
-    background-color: #1f1f1f;
+    background-color: var(--sidebar-dark-background);
     border-right: 1px solid #444;
 }
 
@@ -74,23 +89,23 @@ body.dark-mode #chatHistory {
     border: none; /* Remove border */
     background: none; /* Remove background */
     cursor: pointer; /* Pointer cursor */
-    color: #007bff; /* Color for the icon */
+    color: var(--primary-color); /* Color for the icon */
     font-size: 24px; /* Size of the icon */
     margin-bottom: 10px; /* Space below icon */
 }
 
 #newChatButton:hover {
-    color: #0056b3; /* Darker color on hover */
+    color: var(--secondary-color); /* Darker color on hover */
 }
 
 .session-item {
     padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
 body.dark-mode .session-item:hover {
-    background-color: #333;
+    background-color: #333; /* Darker background on hover in dark mode */
 }
 
 #chatbox {
@@ -98,12 +113,12 @@ body.dark-mode .session-item:hover {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: #ffffff;
+    background-color: var(--sidebar-background);
     border-radius: 0 10px 10px 0;
 }
 
 body.dark-mode #chatbox {
-    background-color: #1f1f1f;
+    background-color: var(--sidebar-dark-background);
 }
 
 #messages {
@@ -113,11 +128,11 @@ body.dark-mode #chatbox {
     margin-bottom: 10px;
     border-radius: 10px;
     background-color: #f9f9f9;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
 body.dark-mode #messages {
-    background-color: #2a2a2a;
+    background-color: #2a2a2a; /* Dark background for messages */
 }
 
 .user-message, .ai-message {
@@ -125,24 +140,24 @@ body.dark-mode #messages {
     padding: 10px;
     border-radius: 10px;
     max-width: 70%;
-    position: relative;
+    position: relative; /* Enable positioning for the pseudo-elements */
 }
 
 .user-message {
-    background-color: #d1e7dd;
-    align-self: flex-end;
+    background-color: var(--user-message-color);
+    align-self: flex-end; /* Align user's messages to the right */
 }
 
 body.dark-mode .user-message {
-    background-color: #007bff;
+    background-color: var(--dark-user-message-color); /* Change user message color in dark mode */
 }
 
 .ai-message {
-    background-color: #cfe2ff;
+    background-color: var(--ai-message-color);
 }
 
 body.dark-mode .ai-message {
-    background-color: #0d6efd;
+    background-color: var(--dark-ai-message-color); /* Change AI message color in dark mode */
 }
 
 .input-container {
@@ -153,33 +168,39 @@ body.dark-mode .ai-message {
 #userInput {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    color: #333;
-    border-radius: 5px;
+    border: 1px solid #ccc; /* Light border */
+    background-color: #f9f9f9; /* Light background */
+    color: var(--text-color); /* Dark text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 body.dark-mode #userInput {
-    background-color: #2a2a2a;
-    color: #f0f4f8;
-    border: 1px solid #555;
+    background-color: #2a2a2a; /* Dark background for input */
+    color: var(--light-text-color); /* Light text color for input */
+    border: 1px solid #555; /* Darker border */
 }
 
 #sendButton {
     padding: 10px;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
 #sendButton:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color); /* Darker blue on hover */
 }
 
 body.dark-mode #sendButton {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue in dark mode */
+}
+
+/* Add transition effect for all elements */
+* {
+    transition: all 0.3s ease;
 }
