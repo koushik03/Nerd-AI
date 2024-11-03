@@ -78,7 +78,7 @@ $(document).ready(function() {
     // Toggle dark/light mode
     $('.theme-toggle').click(function() {
         $('body').toggleClass('dark-mode'); // Toggle the class for dark mode
-        const buttonText = $(this).text() === 'Toggle Dark/Light Mode' ? 'Toggle Light/Dark Mode' : 'Toggle Dark/Light Mode';
+        const buttonText = $(this).text() === 'Light Mode' ? 'Dark Mode' : 'Light Mode';
         $(this).text(buttonText); // Change button text
     });
 
